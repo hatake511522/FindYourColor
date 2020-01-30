@@ -15,8 +15,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LAn-VK-l4s">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LAn-VK-l4s">
+                                <rect key="frame" x="0.0" y="-90" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CfM-CL-i3M">
                                     <size key="itemSize" width="50" height="50"/>
@@ -26,13 +26,26 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rrd-je-0Ra">
+                                <rect key="frame" x="0.0" y="832" width="414" height="30"/>
+                                <state key="normal" title="更新">
+                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="ButtonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="jon-ty-hyB"/>
+                                    <action selector="button:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TTj-cn-PeZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="LAn-VK-l4s" secondAttribute="bottom" id="CKH-fp-yoP"/>
                             <constraint firstItem="LAn-VK-l4s" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Knq-Vf-4QA"/>
+                            <constraint firstItem="rrd-je-0Ra" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="NBl-SN-HCO"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rrd-je-0Ra" secondAttribute="trailing" id="X0d-tC-LPH"/>
                             <constraint firstItem="LAn-VK-l4s" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="XtV-kr-Vb2"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LAn-VK-l4s" secondAttribute="trailing" id="lxj-9e-7Ua"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="rrd-je-0Ra" secondAttribute="bottom" id="vwa-rz-ecy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

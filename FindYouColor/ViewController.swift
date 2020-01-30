@@ -21,6 +21,7 @@ extension UIColor {
 
 class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    //日付を与えると6桁の16進数の文字列を返す処理
     func dateToColorcode(date: Date) -> String{
         let calendar = Calendar.current
         let day    = Int(calendar.component(.day, from: date))
@@ -50,36 +51,17 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             return UICollectionViewCell()
     }
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ColorCell", for: indexPath)
-//        let now = Date()
-//        let nowColor = dateToColorcode(date: now)
-//        print(nowColor)
-//        cell.backgroundColor = UIColor(hex: nowColor)
-//        return cell
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.bounds.size.width / 2
-        let height = collectionView.bounds.size.height / 4
-        return CGSize(width: width, height: height)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0.0
-    }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0.0
-    }
-    
-    
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        
+    @IBAction func button(_ sender: Any) {
+        (sender as AnyObject).setTitle("更新", for: .normal) //なぜか起動時はbuttonのまま、、、ボタンが押されないとこの処理は走らない？
+        (sender as AnyObject).setTitleColor(UIColor.white, for: .normal)
+    }
+    @IBAction func ButtonTouchDown(_ sender: Any) {
+        self.loadData()
+    }
+    func loadData(){
         let now = Date()
         let nowColor = dateToColorcode(date: now)
         collectionView.backgroundColor = UIColor(hex: nowColor)
@@ -87,10 +69,24 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         let screenWidth  = self.view.bounds.width
         let screenHeight = self.view.bounds.width // screen size の取得
         
-        label.frame = CGRect(x: 100, y: 200, width: screenWidth*0.8, height: screenHeight*0.7)
-        label.text = "Today's your color is.. #\(nowColor)" //この後に更新ボタンと時計出せれば完成にしよう
+        label.frame = CGRect(x: 50, y: 50, width: screenWidth*0.8, height: screenHeight*0.2)
+        label.center = self.view.center
+        label.textAlignment = NSTextAlignment.center
+        label.font = UIFont(name:"Courier-Bold", size: 10.5)
+        label.backgroundColor = .white //storyboardによるUIの変更がなれないのでコードでUIをいじります
+        label.textColor = UIColor.black
+        label.text = "Today's your color is...  #\(nowColor)"
         self.view.addSubview(label)
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        self.loadData()
+    }
+
 
 
 }
