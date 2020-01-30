@@ -26,9 +26,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         let day    = Int(calendar.component(.day, from: date))
         let hour   = Int(calendar.component(.hour, from: date))
         let minute = Int(calendar.component(.minute, from: date)) //のちに扱いやすいよう整数型にしておく
-        let out_1 = day * hour
-        let out_2 = hour * minute
-        let out_3 = day * minute
+        
+        let out_1 = day * hour % 256
+        let out_2 = hour * minute % 256
+        let out_3 = day * minute % 256 //比較的大きい数になりやすいので2桁の16進数の最大値である255+1(255はOKなので)で剰余を求める
         
         var red = 0 //定数ではなく変数を使用すること
         var green = 0
@@ -70,7 +71,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     
-
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -82,6 +83,13 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         let now = Date()
         let nowColor = dateToColorcode(date: now)
         collectionView.backgroundColor = UIColor(hex: nowColor)
+        let label = UILabel()
+        let screenWidth  = self.view.bounds.width
+        let screenHeight = self.view.bounds.width // screen size の取得
+        
+        label.frame = CGRect(x: 100, y: 200, width: screenWidth*0.8, height: screenHeight*0.7)
+        label.text = "Today's your color is.. #\(nowColor)" //この後に更新ボタンと時計出せれば完成にしよう
+        self.view.addSubview(label)
     }
 
 
