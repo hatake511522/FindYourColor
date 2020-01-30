@@ -18,7 +18,7 @@
 
 
 
-まず現在の日付から日、時間、分を抽出します。[この記事]([https://qiita.com/isom0242/items/e83ab77a3f56f66edd2f](https://qiita.com/isom0242/items/e83ab77a3f56f66edd2f)を参考にしました。
+まず現在の日付から日、時間、分を抽出します。[この記事](https://qiita.com/isom0242/items/e83ab77a3f56f66edd2f) を参考にしました。
 
 ここで満遍なくカラーコードを出力するため 日×時間、 時間×分、 日×分の３つの値を作成します。
 
@@ -28,7 +28,7 @@
 
 この出力した文字列、例えば"e3452f"をカラーコードとして読み込み色を出力してくれるよう `UIColor` を少し拡張します。
 
-[この記事]([https://qiita.com/Kyome/items/eae6216b13c651254f64](https://qiita.com/Kyome/items/eae6216b13c651254f64)を参考にしました。
+[この記事](https://qiita.com/Kyome/items/eae6216b13c651254f64) を参考にしました。
 
 ```swift
 extension UIColor {
